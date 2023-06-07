@@ -7,6 +7,6 @@ index.js | server.js
 5.Installed MangoDB + set up the database within MongoDB Compass and created a collection 
 called "reviews
 
-
-[MongoDB.pdf](https://github.khoury.northeastern.edu/NEU-CS5610-SU23/CesarHernandez-backend/files/289/MongoDB.pdf) 
-[File Tree.pdf](https://github.khoury.northeastern.edu/NEU-CS5610-SU23/CesarHernandez-backend/files/290/File.Tree.pdf)
+<img width="1072" alt="MongoDB" src="https://media.github.khoury.northeastern.edu/user/10528/files/6a7e1850-09fb-482b-bac5-e0da8ec90ea5">
+|
+<img width="420" alt="File Tree" src="https://media.github.khoury.northeastern.edu/user/10528/files/4da3da6b-694c-4d95-97cb-cd6e976c47c5">
