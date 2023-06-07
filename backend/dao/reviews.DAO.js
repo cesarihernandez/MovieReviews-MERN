@@ -1,0 +1,3 @@
+/*
+This will query the MongoDB database directly for reviews data.
+*/
