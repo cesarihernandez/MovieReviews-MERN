@@ -1,6 +1,6 @@
 /*This will handle data requests specific to movies. */
 
-import { query } from 'express';
+//import { query } from 'express';
 import MoviesDAO from './dao/moviesDAO.js';
 
 export default class MoviesController {
