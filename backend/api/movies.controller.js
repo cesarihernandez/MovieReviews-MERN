@@ -18,7 +18,7 @@ export default class MoviesController {
         }
 
         const { moviesList, totalNumMovies } = await
-            MoviesDAO.apiGetMovies({ filters, page, moviesPerPage });
+            MoviesDAO.getMovies({ filters, page, moviesPerPage });
 
         let response = {
             movies: moviesList,
@@ -47,7 +47,7 @@ export default class MoviesController {
 
     static async apiGetRatings(req, res, next) {
         try {
-            let ratings = await MoviesDAO.apiGetRatings();
+            let ratings = await MoviesDAO.getRatings();
             res.json(ratings);
         } catch(e) {
             console.log(`API, ${e}`);

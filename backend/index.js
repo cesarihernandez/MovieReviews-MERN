@@ -29,3 +29,6 @@ async function main() {
 }
 
 main().catch(console.error);
+
+// We export here for the benedit of testing
+export default app;

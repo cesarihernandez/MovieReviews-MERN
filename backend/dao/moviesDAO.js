@@ -10,7 +10,7 @@ let movies;
 
 export default class MoviesDAO {
     static async injectDB(conn) {
-        if(movies) {
+        if (movies) {
             return;
         }
         try {
@@ -30,7 +30,7 @@ export default class MoviesDAO {
             if ('title' in filters) {
                 query = { $text: { $search: filters['title'] } };
             } else if ('rated' in filters) {
-                query = { 'rated': {$eq: filters['rated'] } };
+                query = { 'rated': { $eq: filters['rated'] } };
             }
         }
 
@@ -41,7 +41,7 @@ export default class MoviesDAO {
                                  .skip(moviesPerPage * page);
             const moviesList = await cursor.toArray();
             const totalNumMovies = await movies.countDocuments(query);
-            return { moviesList, totalNumMovies};
+            return { moviesList, totalNumMovies };
         }   catch (e) {
             console.error(`Unable to issue find commamnd, ${e}`);
             return { moviesList: [], totalNumMovies: 0 };
@@ -78,6 +78,7 @@ export default class MoviesDAO {
             ]).next();
         } catch (e) {
             console.error(`Unable to get movie by ID: ${e}`);
+            throw e;
         }
     }
 }
