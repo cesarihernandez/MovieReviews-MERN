@@ -1,11 +1,10 @@
+import ReviewsDAO from "../dao/reviews.DAO.js";
 /* This will handle data requests for reviews.*/
 
-import ReviewsDAO from "../dao/reviews.DAO";
 
 export default class ReviewsController {
 
     static async apiPostReview(req, res, next) {
-        // TODO:
         try {
             const movieId = req.body.movie_id;
             const review = req.body.review;
