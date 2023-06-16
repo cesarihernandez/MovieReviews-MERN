@@ -6,7 +6,7 @@ import mongodb from 'mongodb';
 const ObjectId = mongodb.ObjectId;
 
 let reviews;
-
+//app.use(express.json());
 export default class ReviewsDAO {
 
     static async injectDB(conn) {
@@ -25,7 +25,7 @@ export default class ReviewsDAO {
         try {
             const reviewDoc = {
                 name: user.name,
-                user_id: user_id,
+                user_id: user._id,
                 date: date,
                 review: review,
                 movie_id: ObjectId(movieId),

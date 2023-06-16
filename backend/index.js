@@ -7,6 +7,7 @@ import app from './server.js';
 import MoviesDAO from './dao/moviesDAO.js';
 
 async function main() {
+    
     dotenv.config();
 
     const client = new mongodb.MongoClient(
@@ -30,5 +31,5 @@ async function main() {
 
 main().catch(console.error);
 
-// We export here for the benedit of testing
+// We export here for the benefit of testing
 export default app;
