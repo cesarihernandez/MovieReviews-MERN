@@ -28,7 +28,7 @@ export default class ReviewsDAO {
                 user_id: user._id,
                 date: date,
                 review: review,
-                movie_id: ObjectId(movieId),
+                movie_id: new ObjectId(movieId),
             }
             return await reviews.insertOne(reviewDoc);
         } catch(e) {
