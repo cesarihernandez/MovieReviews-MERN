@@ -38,10 +38,53 @@ export default class ReviewsController {
     }
 
     static async apiUpdateReview(req, res, next) {
-        // TODO:
+        // TODO: implementing PUT controller & DAO
+        try {
+            const reviewId = req.body.review_id;
+            const review = req.body.review;
+
+            const date = new Date();
+
+            const reviewResponse = await ReviewsDAO.updateReview(
+                reviewId,
+                req.body.user_id,
+                review,
+                date 
+            )
+
+            var { error } = reviewResponse
+            if (error) {
+                res.status(500).json({ error });
+            }
+
+            if (reviewResponse.modifiedCount === 0) {
+                throw new Error ("Unable to update review.")
+            }
+            res.json({ status: "success "});
+        } catch(e) {
+            res.status(500).json({ errro: e.message })
+        }
     }
 
     static async apiDeleteReview(req, res, next) {
-        // TODO:
+        // TODO: implementing delete controller & DAO
+        try {
+            const review_id = req.body.review_id;
+            const userId = req.body.user_id;
+            const reviewResponse = await ReviewsDAO.deleteReview(
+                reviewId,
+                userId,
+            );
+
+            var { error } = reviewResponse;
+            if (error) {
+                res.status(500).json({ error });
+            } else {
+                res.json({ status: "success"});
+            }
+
+        } catch (e) {
+            res.status(500).json({ error: e.message });
+        }
     }
 }

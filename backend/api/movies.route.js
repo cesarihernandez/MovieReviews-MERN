@@ -7,8 +7,7 @@ import express from 'express';
 import MoviesController from './movies.controller.js';
 import ReviewsController from './reviews.controller.js';
 
-
-const router = express.Router(); //Get access to Express router
+const router = express.Router(); //Get access to Express router\
 
 router.route('/').get(MoviesController.apiGetMovies);
 router.route('/id/:id').get(MoviesController.apiGetMoiveById);
