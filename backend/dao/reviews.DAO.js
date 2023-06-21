@@ -31,13 +31,14 @@ export default class ReviewsDAO {
                 movie_id: new ObjectId(movieId),
             }
             return await reviews.insertOne(reviewDoc);
+
         } catch(e) {
             console.error(`Unable to post review: ${e}`);
             return { error: e };
         }
     }
 
-    static async updateReview(reviewId, user, review, date) {
+    static async updateReview(reviewId, userId, review, date) {
         //DAO
         try {
             const updateResponse = await reviews.updateOne(
@@ -50,7 +51,7 @@ export default class ReviewsDAO {
         }
     }
 
-    static async deleteReview(reviewId) {
+    static async deleteReview(reviewId, userId) {
         try {
             const deleteResponse = await reviews.deleteOne({
                 _id: new ObjectId(reviewId),

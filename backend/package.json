@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "test": "mocha --reporter spec --exit",
-    "start": "node server.js"
+    "start": "node index.js"
   },
   "author": "",
   "license": "ISC",

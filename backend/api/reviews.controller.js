@@ -6,26 +6,28 @@ export default class ReviewsController {
 
     static async apiPostReview(req, res, next) {
         try {
+            // Grab the information from the user
             const movieId = req.body.movie_id;
             const review = req.body.review;
             const userInfo = {
                 name: req.body.name,
                 _id: req.body.user_id,
             }
-
             const date = new Date();
-
+            // Store that information in the database
             const reviewResponse = await ReviewsDAO.addReview(
-                movieId,
-                userInfo,
-                review,
+                movieId, 
+                userInfo, 
+                review, 
                 date
-            );
+            )
 
             var { error } = reviewResponse;
-
+            // Send a response back to the client's request
+            // if there is an error what should we respond with?
+            // reviewMovie can be { error: e}
             if (error) {
-                res.status(500).json({ error: "Unable to post review." });
+                res.status(500).json({error: "Unable to post review."});
             } else {
                 res.json({
                     status: "success",
@@ -33,8 +35,10 @@ export default class ReviewsController {
                 });
             }
         } catch (e) {
-            res.status(500).json({ error: e });
+            res.status(500).json({error: e});
         }
+
+          
     }
 
     static async apiUpdateReview(req, res, next) {
@@ -69,7 +73,7 @@ export default class ReviewsController {
     static async apiDeleteReview(req, res, next) {
         // TODO: implementing delete controller & DAO
         try {
-            const review_id = req.body.review_id;
+            const reviewId = req.body.review_id;
             const userId = req.body.user_id;
             const reviewResponse = await ReviewsDAO.deleteReview(
                 reviewId,

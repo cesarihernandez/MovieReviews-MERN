@@ -33,7 +33,7 @@ export default class MoviesController {
     static async apiGetMoiveById(req, res, next) {
         try {
             let id = req.params.id || {}
-            let movie = await MoviesDAO.apiGetMoiveById(id);
+            let movie = await MoviesDAO.getMovieById(id);
             if (!movie) {
                 res.status(404).json({ error: "not found"});
                 return;
