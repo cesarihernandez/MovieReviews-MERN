@@ -160,7 +160,13 @@ const retrieveNextPage = useCallback(() => {
                                 <Card className="moviesListCard">
                                     <Card.Img
                                     className="smallPoster"
-                                    src={movie.poster+"/100x180"} />
+                                    src={this.props.movie.poster+"/100x180"}
+                                    alt={this.props.img_alt}
+                                    onError={(e) => {
+                                        e.target.onerror = null
+                                        e.target.src = 'frontend/public/images/NoPosterAvailable-crop.jpg'
+                                    }}
+                                    />
                                     <Card.Body>
                                         <Card.Title> {movie.Title}</Card.Title>
                                         <Card.Text>

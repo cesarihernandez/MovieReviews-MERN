@@ -1,5 +1,3 @@
-import logo from './logo.svg';
-import './App.css';
 import {Routes, Route, Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Container from "react-bootstrap/Container";
@@ -7,6 +5,8 @@ import { Navbar, Nav } from "react-bootstrap";
 
 import MoviesList from "./components/MoviesList";
 import Movie from "./components/Movie";
+
+import './App.css';
 
 function App() {
   return (
