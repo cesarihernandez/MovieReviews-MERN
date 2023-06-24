@@ -18,9 +18,16 @@ const Movie = props => {
     });
 
     useEffect(() => {
-        const getMovie = id => {
+        const getMovie = async id => {
+            //console.log('id', id);
             // TODO:
             // Implement getMovie
+            //await is how we handle asynchronous things
+            const res = await MovieDataService.findById(id)
+            console.log(res.data)
+            // Take this data coming from backend and update the movie state
+            setMovie(res.data)
+
         }
         getMovie(params.id)
     }, [params.id]);
@@ -34,7 +41,12 @@ const Movie = props => {
                         <Image
                         className="bigPicture"
                         src={movie.poster+"/100px250"}
-                        fluid />
+                        fluid 
+                        onError={(e) => {
+                            e.currentTarget.onerror = null; // prevents looping
+                            e.currentTarget.src="/images/NoPosterAvailable-crop.jpg";
+                        }}
+                        />
                     </div>
                     </Col>
                     <Col>
@@ -48,9 +60,10 @@ const Movie = props => {
                     </Card>
                     <h2>Reviews</h2>
                     <br></br>
+                   
                     { movie.reviews.map((review, index) => {
                         return (
-                            <div className="d-flex">
+                            <div className="d-flex reviewContainer">
                                 <div className="flex-shrink-0 reviewsText">
                                     <h5>{review.name + " reviewed on"}</h5>
                                     <p className="review">{review.review}</p>

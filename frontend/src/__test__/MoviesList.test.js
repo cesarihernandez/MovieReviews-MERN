@@ -21,6 +21,17 @@ test('renders the appropriate number of movie cards', async () => {
 
     await waitFor(() => screen.getByText(TITLE_OF_MOVIE));
     const movieCards = container.getElementsByClassName(MOVIE_CARD_CLASS);
-    screen.debug();
+    // screen.debug();
     expect(movieCards.length).toBe(NUMBER_OF_MOVIES);
+
+    /*const movieHeaders = container.getElementsByClassName("movieListCard");
+    let header = "";
+    for (let i = 0; i < movieHeaders.length; i++) {
+        const movieHeader = movieHeaders[i];
+        header = movieHeader.textContent;
+        console.log(header);
+      }*/
+    //screen.debug();
+   
+
 });

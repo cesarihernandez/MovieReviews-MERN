@@ -20,12 +20,14 @@ const MoviesList = props => {
     const [entriesPerPage, setEntriesPerPage] = useState(0);
     const [currentSearchMode, setCurrentSearchMode] = useState("");
 
+    
+
 //useCallback to define functions which should
 //only be created once and will be dependencies for 
 // useEffect
 const retrieveRatings = useCallback(() => {
     MovieDataService.getRatings()
-    .then( response => {
+    .then(response => {
         setRatings(["All Ratings"].concat(response.data))
     })
     .catch(e => {
@@ -160,12 +162,11 @@ const retrieveNextPage = useCallback(() => {
                                 <Card className="moviesListCard">
                                     <Card.Img
                                     className="smallPoster"
-                                    src={this.props.movie.poster+"/100x180"}
-                                    alt={this.props.img_alt}
+                                    src={movie.poster+"/100x180"}
                                     onError={(e) => {
-                                        e.target.onerror = null
-                                        e.target.src = 'frontend/public/images/NoPosterAvailable-crop.jpg'
-                                    }}
+                                        e.currentTarget.onerror = null; // prevents looping
+                                        e.currentTarget.src="/images/NoPosterAvailable-crop.jpg";
+                                         }}
                                     />
                                     <Card.Body>
                                         <Card.Title> {movie.Title}</Card.Title>
@@ -195,5 +196,6 @@ const retrieveNextPage = useCallback(() => {
             </Container>
         </div>
     )
+
 }
 export default MoviesList;

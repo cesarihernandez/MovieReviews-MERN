@@ -26,6 +26,19 @@ const mockMovieResponse= {
         "total_results": 2
 }
 
+const mockSingleMovieResponse = {
+    "_id": "573a1390f29313caabcd4135",
+            "plot": "Three men hammer on an anvil and pass a bottle of beer around",
+            "title": "Blacksmith Scene",
+            "fullplot": "A stationary camera looks at a large anvil",
+            "rated": "UNRATED",
+            "reviews": [{
+                review:"Great movie"
+            }, {
+                review: "awesome movie"
+            }]
+}
+
 const mockServer = setupServer(
     rest.get(`${process.env.REACT_APP_API_BASE_URL}/api/v1/movies/ratings`,
     (_, res, ctx) => {
@@ -34,7 +47,12 @@ const mockServer = setupServer(
     rest.get(`${process.env.REACT_APP_API_BASE_URL}/api/v1/movies`,
     (_, res, ctx) => {
         return res(ctx.status(200), ctx.json(mockMovieResponse))
+    }),
+    rest.get(`${process.env.REACT_APP_API_BASE_URL}/api/v1/movies/id/${mockSingleMovieResponse._id}`,
+    (_, res, ctx) => {
+        return res(ctx.status(200), ctx.json(mockMovieResponse))
     })
+
 );
 
 export default mockServer;
