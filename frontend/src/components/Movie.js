@@ -6,8 +6,11 @@ import Container from 'react-bootstrap/Container';
 import Image from 'react-bootstrap/Image';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
+import Button from 'react-bootstrap/Button';
+import moment from 'moment';
+import { Link } from 'react-router-dom';
 
-const Movie = props => {
+const Movie = ({user}) => {
     let params = useParams();
 
     const [movie, setMovie] = useState({
@@ -56,6 +59,10 @@ const Movie = props => {
                             <Card.Text>
                                 {movie.plot}
                             </Card.Text>
+                            { user && 
+                            <Link to={"/movies/"+params.id+"/review"}>
+                                Add Review
+                            </Link> }
                         </Card.Body>
                     </Card>
                     <h2>Reviews</h2>
@@ -63,10 +70,31 @@ const Movie = props => {
                    
                     { movie.reviews.map((review, index) => {
                         return (
-                            <div className="d-flex reviewContainer">
+                            <div className="d-flex" key={index}>
                                 <div className="flex-shrink-0 reviewsText">
-                                    <h5>{review.name + " reviewed on"}</h5>
+                                    <h5>{review.name + " reviewed on"} { moment(review.date).format("Do MMMM YYYY") }</h5>
                                     <p className="review">{review.review}</p>
+                                    { user && user.googleId === review.user_id &&
+                                    <Row>
+                                        <Col>
+                                        <Link to={{
+                                            pathname: "/movies/"+params.id+"/review"
+                                        }}
+                                        state = {{
+                                            currentReview: review
+                                        }} >
+                                            Edit
+                                        </Link>
+                                        </Col>
+                                        <Col>
+                                        <Button variant="link" onClick={() => {
+                                            // TODO: delete review
+                                        }}>
+                                            Delete
+                                        </Button>
+                                        </Col>
+                                        </Row>
+                    }
                                 </div>
                             </div>
                         )

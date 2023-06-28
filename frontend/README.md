@@ -1,70 +1,11 @@
-# Getting Started with Create React App
+1. Made updates to MoviesList.js and Movie.js file by adding the onError attribute on the Card.Img element. This allowed for a placeholder photo to be present instead of a broken icon image.
+2. In Movie.js I implemented the getMovie function by using MovieDataService to use the mething findById(id) and then update the data by using
+setMovie. I also needed to create a new Route to access the backend data by createing a findById method in services/movies.js file.
+3. I attempted to created a Movie test but it continued to fail as well as the MoviesList.test.js file that was given to us. I was unsure if we needed 
+to make any adjustments to Movies.test.js but after inspecting the website and uitlizing console.log, it shows I was able to get the Movie and number of reviews.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
-
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+[display localhost_3000 with placeholder.pdf](https://github.khoury.northeastern.edu/NEU-CS5610-SU23/CesarHernandez-frontend/files/291/display.localhost_3000.with.placeholder.pdf) >>
+[single movie with movie poster.pdf](https://github.khoury.northeastern.edu/NEU-CS5610-SU23/CesarHernandez-frontend/files/292/single.movie.with.movie.poster.pdf) >>
+[single movie with placeholder poster.pdf](https://github.khoury.northeastern.edu/NEU-CS5610-SU23/CesarHernandez-frontend/files/293/single.movie.with.placeholder.poster.pdf) >>
+[tests.pdf](https://github.khoury.northeastern.edu/NEU-CS5610-SU23/CesarHernandez-frontend/files/294/tests.pdf)
