@@ -1,3 +1,18 @@
+1. Created an "Edit" feature for reviews by utilizing the Link to attribute to send the user to the Add Reivew component. 
+2. Added a "Delete"feature for reviews by writing a function that calls in the Delete button's "onClick" callback. This function also
+removes the review from the page.
+
+[newly written review.pdf](https://github.khoury.northeastern.edu/NEU-CS5610-SU23/CesarHernandez-frontend/files/295/newly.written.review.pdf)
+>>
+[review edited.pdf](https://github.khoury.northeastern.edu/NEU-CS5610-SU23/CesarHernandez-frontend/files/296/review.edited.pdf)
+
+
+
+
+
+
+
+
 1. Made updates to MoviesList.js and Movie.js file by adding the onError attribute on the Card.Img element. This allowed for a placeholder photo to be present instead of a broken icon image.
 2. In Movie.js I implemented the getMovie function by using MovieDataService to use the mething findById(id) and then update the data by using
 setMovie. I also needed to create a new Route to access the backend data by createing a findById method in services/movies.js file.
