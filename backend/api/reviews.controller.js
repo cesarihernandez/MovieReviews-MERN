@@ -73,8 +73,10 @@ export default class ReviewsController {
     static async apiDeleteReview(req, res, next) {
         // TODO: implementing delete controller & DAO
         try {
+           
             const reviewId = req.body.review_id;
             const userId = req.body.user_id;
+            console.log(reviewId, userId)
             const reviewResponse = await ReviewsDAO.deleteReview(
                 reviewId,
                 userId,
@@ -84,7 +86,7 @@ export default class ReviewsController {
             if (error) {
                 res.status(500).json({ error });
             } else {
-                res.json({ status: "success"});
+                res.json({ status: "deleted"});
             }
 
         } catch (e) {

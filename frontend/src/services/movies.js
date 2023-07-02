@@ -24,8 +24,11 @@ class MovieDataService {
         return axios.post(`${process.env.REACT_APP_API_BASE_URL}/api/v1/movies/review`, data);
     }
     
-    deleteReview(data) { // this is to allow the frontend to speak to backend about deleting a review
-        return axios.delete(`${process.env.REACT_APP_API_BASE_URL}/api/v1/movies/review`, date);
+    deleteReview(body) { // this is to allow the frontend to speak to backend about deleting a review
+        return axios.delete(`${process.env.REACT_APP_API_BASE_URL}/api/v1/movies/review`, body);
+    }
+    editReview(data) {
+        return axios.put(`${process.env.REACT_APP_API_BASE_URL}/api/v1/movies/review`, data);
     }
 }
 
