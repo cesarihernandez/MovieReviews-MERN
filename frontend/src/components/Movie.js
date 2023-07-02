@@ -115,7 +115,7 @@ const Movie = ({ user }) => {
                                                         pathname: "/movies/" + params.id + "/review"
                                                     }}
                                                         state={{
-                                                            currentReview: review
+                                                            currentReview : review
                                                         }} >
                                                         Edit
                                                     </Link>
