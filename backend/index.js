@@ -6,7 +6,7 @@ import dotenv from 'dotenv';
 import app from './server.js';
 import MoviesDAO from './dao/moviesDAO.js';
 import ReviewsDAO from './dao/reviews.DAO.js'; //mod for pt.2 challenge
-
+import FavoritesDAO from './dao/favoritesDAO.js';
 async function main() {
     
     dotenv.config();
@@ -19,6 +19,7 @@ async function main() {
     try {
         // Connect to MongoDB server
         await client.connect();
+        await FavoritesDAO.injectDB(client);
         await MoviesDAO.injectDB(client);
         await ReviewsDAO.injectDB(client); //mod pt2 challenge
 
