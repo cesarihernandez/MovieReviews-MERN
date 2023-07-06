@@ -13,12 +13,23 @@ import Login from "./components/Login";
 import Logout from './components/Logout';
 
 import './App.css';
+import axios from 'axios';
+//import { responsivePropType } from 'react-bootstrap/esm/createUtilityClasses';
 
 const clientId = process.env.REACT_APP_GOOGLE_CLIENT_ID;
 
 function App() {
 
   const [user, setUser] = useState(null);
+  const [favorites, setFavorites] = useState([]);
+    
+    const addFavorite = (movieId) => {
+      setFavorites([...favorites, movieId])
+    }
+
+    const deleteFavorite = (movieId) => {
+      setFavorites(favorites.filter(f => f !== movieId));
+    }
 
   useEffect(() => {
     let loginData = JSON.parse(localStorage.getItem("login"));
@@ -34,6 +45,20 @@ function App() {
       }
     }
   }, []);
+
+  //hw6 updates
+  const onClickFavorites = () => {
+    if(favorites) {
+      //when already added
+    } else {
+      axios.put(`api/v1/movies/favories`, setFavorites)
+      .then(response => {
+        if(response.data.success) {
+           
+        }
+      })
+    }
+  }
 
   return (
     <GoogleOAuthProvider clientId={clientId}>
@@ -62,10 +87,20 @@ function App() {
 
       <Routes>
         <Route exact path="/" element={
-          <MoviesList />}
+          <MoviesList 
+          user = { user }
+          addFavorite = { addFavorite }
+          deleteFavorite = { deleteFavorite }
+          favorites = { favorites }
+          />}
         />
         <Route exact path="/movies" element={
-          <MoviesList />}
+          <MoviesList 
+          user = { user }
+          addFavorite = { addFavorite }
+          deleteFavorite = { deleteFavorite }
+          favorites = { favorites }
+          />}
         />
         <Route path="/movies/:id" element={
           <Movie user={ user }/>}

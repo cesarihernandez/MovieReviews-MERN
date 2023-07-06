@@ -7,10 +7,15 @@ import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import Container from 'react-bootstrap/Container';
 import Card from 'react-bootstrap/Card';
-
+import { BsStar, BsStarFill } from "react-icons/bs";
 import "./MoviesList.css";
 
-const MoviesList = props => {
+const MoviesList =  ({
+    user,
+    favorites,
+    addFavorite,
+    deleteFavorite
+}) => {
     // useState to set state values
     const [movies, setMovies] = useState([]);
     const [searchTitle, setSearchTitle] = useState([]);
@@ -160,6 +165,16 @@ const retrieveNextPage = useCallback(() => {
                         return(
                             <Col key={movie._id}>
                                 <Card className="moviesListCard">
+                                    { user && (
+                                        favorites.includes(movie._id) ?
+                                        <BsStarFill className="star starFill" onClick={() => {
+                                            deleteFavorite(movie._id);
+                                        }}/>
+                                        :
+                                        <BsStar className="star starEmpty" onClick={() => {
+                                            addFavorite(movie._id);
+                                        }}/>
+                                    )}
                                     <Card.Img
                                     className="smallPoster"
                                     src={movie.poster+"/100x180"}
