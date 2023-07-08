@@ -4,6 +4,7 @@ This is where the Express framework will be put to use.*/
 import express from 'express';
 import cors from 'cors';
 import moviesRoutes from './api/movies.route.js';
+import favoritesRoutes from './api/favorites.route.js';
 
 const app = express();
 
@@ -12,6 +13,7 @@ app.use(express.json());
 // Looking fora  route that is /
 
 app.use('/api/v1/movies', moviesRoutes);
+app.use('/api/v1/favorites', favoritesRoutes)
 app.use('*', (req, res) => {
     res.status(404).json({ error: 'not found' });
 });

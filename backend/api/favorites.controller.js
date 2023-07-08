@@ -1,9 +1,9 @@
 import FavoritesDAO from '../dao/favoritesDAO.js';
 
 export default class FavoritesController {
-    static async apiUpdateFavorites(req, red, next) {
+    static async apiUpdateFavorites(req, res, next) {
         try {
-            const FavoritesResponse = await FavoritesDAO.apiUpdateFavorites(
+            const FavoritesResponse = await FavoritesDAO.updateFavorites(
                 req.body._id,
                 req.body.favorites
             )

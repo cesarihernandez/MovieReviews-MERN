@@ -10,6 +10,7 @@ import FavoritesDAO from './dao/favoritesDAO.js';
 async function main() {
     
     dotenv.config();
+    console.log(process.env.MOVIEREVIEWS_DB_URI)
 
     const client = new mongodb.MongoClient(
         process.env.MOVIEREVIEWS_DB_URI

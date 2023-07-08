@@ -6,7 +6,7 @@ export default class FavoritesDAO {
             return;
         }
         try {
-            favoritesCollection = await conn.db(process.env.MOVIEWREVIEWS_COLLECTION)
+            favoritesCollection = await conn.db(process.env.MOVIEREVIEWS_COLLECTION)
                             .collection('favorites');
         }
         catch(e) {
@@ -15,6 +15,7 @@ export default class FavoritesDAO {
     }
 
     static async updateFavorites(userId, favorites) {
+        console.log('trying to update favorite', userId, favorites)
         try {
             const updateResponse = await favoritesCollection.updateOne(
                 {_id: userId },
@@ -37,6 +38,7 @@ export default class FavoritesDAO {
                 _id: id
             });
             const favorites = await cursor.toArray();
+            console.log('favorites grabed', favorites)
             return favorites[0];
         }   catch(e) {
             console.error(`Something went wrong in getFavorites: ${e}`);
