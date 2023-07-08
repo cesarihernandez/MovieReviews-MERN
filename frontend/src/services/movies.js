@@ -30,10 +30,6 @@ class MovieDataService {
     editReview(data) {
         return axios.put(`${process.env.REACT_APP_API_BASE_URL}/api/v1/movies/review`, data);
     }
-
-    addFavorites(data) { //hw6 proposed updates.
-        return axios.put(`${process.env.REACT_APP_API_BASE_URL}/api/v1/movies/favorites`, data);
-    }
 }
 
 /*eslint import/no-anonymous-default-export: [2, {"allowNew": true}] */

@@ -1,6 +1,6 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { GoogleOAuthProvider } from '@react-oauth/google';
-import {Routes, Route, Link } from "react-router-dom";
+import {Routes, Route, Link, useRevalidator } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Container from "react-bootstrap/Container";
 import { Navbar, Nav } from "react-bootstrap";
@@ -14,6 +14,7 @@ import Logout from './components/Logout';
 
 import './App.css';
 import axios from 'axios';
+import FavoriteService from './services/favorites';
 //import { responsivePropType } from 'react-bootstrap/esm/createUtilityClasses';
 
 const clientId = process.env.REACT_APP_GOOGLE_CLIENT_ID;
@@ -23,13 +24,47 @@ function App() {
   const [user, setUser] = useState(null);
   const [favorites, setFavorites] = useState([]);
     
-    const addFavorite = (movieId) => {
-      setFavorites([...favorites, movieId])
+    const addFavorite = (movieId) => { //uses array destructuring to add a movie ID number to the list
+      console.log('trying to add favorite...')
+      const data = {
+        _id: user.googleId,
+        favorites: [...favorites, movieId]
+      }
+      // Update backend first
+      FavoriteService.updateFavorites(data)
+      .then(response => {
+        // Then after backend is updated, update frontend
+        setFavorites([...favorites, movieId])
+      })
+     
+
     }
 
-    const deleteFavorite = (movieId) => {
-      setFavorites(favorites.filter(f => f !== movieId));
+    const deleteFavorite = (movieId) => { // uses filter to create a new array without the ID to be deleted
+      const data = {
+        _id: user.googleId,
+        favorites: favorites.filter(f => f !== movieId)
+      }
+      FavoriteService.updateFavorites(data)
+      .then(response => {
+        setFavorites(favorites.filter(f => f !== movieId));  
+      })
+      
     }
+
+    const retrieveFavorites = useCallback(() => {
+      if(user) {
+        FavoriteService.getFavorites(user.googleId)
+        .then(response => {
+          console.log('favorites', response.data)
+            setFavorites(response.data.favorites)
+        })
+        .catch(e => {
+            console.log(e.response.data);
+        
+        });
+      }
+  }, [user]);
 
   useEffect(() => {
     let loginData = JSON.parse(localStorage.getItem("login"));
@@ -45,6 +80,10 @@ function App() {
       }
     }
   }, []);
+
+  useEffect(() => {
+    retrieveFavorites();
+}, [retrieveFavorites]);
 
   //hw6 updates
   const onClickFavorites = () => {
