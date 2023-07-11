@@ -1,3 +1,14 @@
+1. Implemented handlers for getting and setting favorites, and then implemented frontend interface to enable logged in
+users to click a star on a movie card to add the movie to their favorties list.
+2. Added on overlay for the star icon so that it does not push down the movie card.
+
+[favorites list.pdf](https://github.khoury.northeastern.edu/NEU-CS5610-SU23/CesarHernandez-frontend/files/297/favorites.list.pdf)
+>>
+[star icon.pdf](https://github.khoury.northeastern.edu/NEU-CS5610-SU23/CesarHernandez-frontend/files/298/star.icon.pdf)
+
+
+
+
 1. Created an "Edit" feature for reviews by utilizing the Link to attribute to send the user to the Add Reivew component. 
 2. Added a "Delete"feature for reviews by writing a function that calls in the Delete button's "onClick" callback. This function also
 removes the review from the page.

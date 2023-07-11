@@ -8,7 +8,7 @@ import Container from 'react-bootstrap/Container';
 const AddReview = ({ user }) => {
     const navigate = useNavigate()
     let params = useParams();
-
+    
     const location = useLocation();
     console.log('location', location)
     let editing = location.state.currentReview ? true : false;
