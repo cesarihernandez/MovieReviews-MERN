@@ -85,20 +85,6 @@ function App() {
     retrieveFavorites();
 }, [retrieveFavorites]);
 
-  //hw6 updates
-  const onClickFavorites = () => {
-    if(favorites) {
-      //when already added
-    } else {
-      axios.put(`api/v1/movies/favories`, setFavorites)
-      .then(response => {
-        if(response.data.success) {
-           
-        }
-      })
-    }
-  }
-
   return (
     <GoogleOAuthProvider clientId={clientId}>
       <div className="App">
