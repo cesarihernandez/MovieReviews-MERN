@@ -11,6 +11,9 @@ import FavoritesController from './favorites.controller.js';
 const router = express.Router(); //Get access to Express router\
 
 router.route('/favorites/:userId').get(FavoritesController.apiGetFavorites);
+router
+    .route("/favoritesWithMovieInfo/:userId")
+    .get(FavoritesController.apiGetFavoritesWithMovieInfo);
 
 router
     .route("/review")

@@ -2,8 +2,10 @@ import axios from 'axios';
 
 class MovieDataService {
 
-    getAll(page = 0) {
-        return axios.get(`${process.env.REACT_APP_API_BASE_URL}/api/v1/movies?page=${page}`);
+    getAll(page = 0) { //page = 0 is the parameter taken in for the function getAll
+        return axios.get(`${process.env.REACT_APP_API_BASE_URL}/api/v1/movies?page=${page}`); //api routes
+        //axios is a library that allows us to talk to the backend. 
+        //axios makes HTTP request
     }
 
     find(query, by='title', page=0) {

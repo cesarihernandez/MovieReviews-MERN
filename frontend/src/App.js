@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { GoogleOAuthProvider } from '@react-oauth/google';
-import {Routes, Route, Link, useRevalidator } from "react-router-dom";
+import {Routes, Route, Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Container from "react-bootstrap/Container";
 import { Navbar, Nav } from "react-bootstrap";
@@ -13,8 +13,9 @@ import Login from "./components/Login";
 import Logout from './components/Logout';
 
 import './App.css';
-import axios from 'axios';
+//import axios from 'axios';
 import FavoriteService from './services/favorites';
+import FavoritesList from './components/FavoritesList';
 //import { responsivePropType } from 'react-bootstrap/esm/createUtilityClasses';
 
 const clientId = process.env.REACT_APP_GOOGLE_CLIENT_ID;
@@ -100,6 +101,9 @@ function App() {
               <Nav.Link as={Link} to="/movies">
                 Movies
               </Nav.Link>
+              <Nav.Link as={Link} to="/favorites">
+                Favorites
+              </Nav.Link>
             </Nav>
           </Navbar.Collapse>
           { user ? (
@@ -110,7 +114,7 @@ function App() {
         </Container>
       </Navbar>
 
-      <Routes>
+      <Routes> 
         <Route exact path="/" element={
           <MoviesList 
           user = { user }
@@ -133,10 +137,14 @@ function App() {
         <Route path="/movies/:id/review" element={
           <AddReview user={ user }/>}
         />
+        <Route path="/favorites" element={
+          <FavoritesList user={ user }/> } //props 
+          //allows us to share data between components
+          />
       </Routes>
     </div>
     </GoogleOAuthProvider>
   );
 }
 
-export default App;
+export default App; //will allow other files to use this component

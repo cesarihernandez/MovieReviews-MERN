@@ -17,10 +17,11 @@ export default class MoviesController {
             filters.title = req.query.title;
         }
 
-        const { moviesList, totalNumMovies } = await
-            MoviesDAO.getMovies({ filters, page, moviesPerPage });
+        const { moviesList, totalNumMovies } = await //moviesList, totalNumMovies are parameters that allows
+        //users to customize the info they want to receive. 
+            MoviesDAO.getMovies({ filters, page, moviesPerPage }); //here he go into our backend and get the data.
 
-        let response = {
+        let response = { //the response from the request by the user, which is the moviesList and totalNumMovies
             movies: moviesList,
             page: page,
             filters: filters,

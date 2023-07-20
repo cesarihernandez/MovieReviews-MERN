@@ -16,5 +16,8 @@ router
 router
     .route("/:userId")
     .get(FavoritesController.apiGetFavorites);
+    //add favorite page route here
+
+
 
 export default router;

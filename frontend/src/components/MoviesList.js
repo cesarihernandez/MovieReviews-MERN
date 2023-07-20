@@ -17,6 +17,7 @@ const MoviesList =  ({
     deleteFavorite
 }) => {
     // useState to set state values
+    // State allows use to update UI
     const [movies, setMovies] = useState([]);
     const [searchTitle, setSearchTitle] = useState([]);
     const [searchRating, setSearchRating] = useState([]);
@@ -25,7 +26,7 @@ const MoviesList =  ({
     const [entriesPerPage, setEntriesPerPage] = useState(0);
     const [currentSearchMode, setCurrentSearchMode] = useState("");
 
-    
+console.log()
 
 //useCallback to define functions which should
 //only be created once and will be dependencies for 
@@ -41,12 +42,13 @@ const retrieveRatings = useCallback(() => {
 }, []);
 
 const retrieveMovies = useCallback(() => {
-    setCurrentSearchMode("");
-    MovieDataService.getAll(currentPage)
+    setCurrentSearchMode(""); //Reset our seach box and then go and grab our movies
+    MovieDataService.getAll(currentPage) //talks to our backend utilizing MovieDataService file
     .then(response => {
         setMovies(response.data.movies);
         setCurrentPage(response.data.page);
-        setEntriesPerPage(response.data.entries_per_page);
+        setEntriesPerPage(response.data.entries_per_page); //the response is everything the client
+        //asked for which in the above case is a movie, currentpage, and the number of movies per page
     })
     .catch(e => {
         console.log(e);
@@ -87,7 +89,7 @@ const retrieveNextPage = useCallback(() => {
     }
 }, [currentSearchMode, findByTitle, findByRating, retrieveMovies]);
 
-//Use effec to carry out side effect functionality
+//Use effect to carry out side effect functionality
     useEffect(() => {
         retrieveRatings();
     }, [retrieveRatings]);
