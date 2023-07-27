@@ -1,7 +1,9 @@
 import "./favoritesList.css";
 import FavoriteService from "../services/favorites";
 import React, { useState, useEffect, useCallback } from 'react';
-
+import FavoriteCard from "./FavoriteCard";
+import { useDrag } from 'react-dnd';
+import { useDrop } from 'react-dnd';
 
 const FavoritesList = ({ user }) => {
 
@@ -42,23 +44,13 @@ const FavoritesList = ({ user }) => {
                 // array with results. takes in two arguments the element and the index of the current element being processed 
                 //in the array
                     return (
-                        <div className="favoritesCard">
-                            <div className="borderCard">
-                                <div className="favoritesNumber">
-                                    <p className="favoritesNumberOneDigit">
-                                        {i + 1}
-                                    </p>
-                                </div>
-                                <img className="favoritesPoster" src={favorite.poster} onError={(e) => {
-                                    e.currentTarget.onerror = null; // prevents looping 
-                                    e.currentTarget.src = "/images/NoPosterAvailable-crop.jpg";
-                                }} /> 
-                                <h1 className="favoritesTitle"> 
-                                    {favorite.title}
-                                </h1>
-
-                            </div>
-                        </div>
+                       <FavoriteCard 
+                        favorite={ favorite }
+                       i={ i } 
+                       favorites={ favorites } //passing favorties to FavoriteCard as a prop
+                       setFavorites= { setFavorites }
+                       user={ user }
+                       /> 
                     )
                 })}
 

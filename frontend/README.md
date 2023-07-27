@@ -24,6 +24,10 @@ removes the review from the page.
 
 
 
+
+
+
+
 1. Made updates to MoviesList.js and Movie.js file by adding the onError attribute on the Card.Img element. This allowed for a placeholder photo to be present instead of a broken icon image.
 2. In Movie.js I implemented the getMovie function by using MovieDataService to use the mething findById(id) and then update the data by using
 setMovie. I also needed to create a new Route to access the backend data by createing a findById method in services/movies.js file.
@@ -35,3 +39,17 @@ to make any adjustments to Movies.test.js but after inspecting the website and u
 [single movie with movie poster.pdf](https://github.khoury.northeastern.edu/NEU-CS5610-SU23/CesarHernandez-frontend/files/292/single.movie.with.movie.poster.pdf) >>
 [single movie with placeholder poster.pdf](https://github.khoury.northeastern.edu/NEU-CS5610-SU23/CesarHernandez-frontend/files/293/single.movie.with.placeholder.poster.pdf) >>
 [tests.pdf](https://github.khoury.northeastern.edu/NEU-CS5610-SU23/CesarHernandez-frontend/files/294/tests.pdf)
+
+
+
+
+List of concepts to understand
+
+1. Variables
+2. Functions
+3. Arrays - What they are used for, some functions with arrays
+4. Objects
+5. HTTP Request Lifeycle (Frontend -> backend -> frontend the whole lifecycle)
+6. State in react
+7. Props in react (conceptually and code)
+8. APIs (what are endpoints, what are models, and what are controllers)

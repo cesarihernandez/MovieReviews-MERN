@@ -17,6 +17,9 @@ import './App.css';
 import FavoriteService from './services/favorites';
 import FavoritesList from './components/FavoritesList';
 //import { responsivePropType } from 'react-bootstrap/esm/createUtilityClasses';
+//import { ItemTypes } from 
+//Item is an object describing what is being dragged.
+
 
 const clientId = process.env.REACT_APP_GOOGLE_CLIENT_ID;
 
