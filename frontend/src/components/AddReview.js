@@ -11,7 +11,7 @@ const AddReview = ({ user }) => {
     
     const location = useLocation();
     console.log('location', location)
-    let editing = location.state.currentReview ? true : false;
+    let editing = location.currentReview ? true : false; //why was state null, previous was location.state.currentReview
     let initialReviewState = "";
     if (editing) {
         initialReviewState = location.state.currentReview.review
