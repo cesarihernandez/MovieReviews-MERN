@@ -23,7 +23,7 @@ const AddReview = ({ user }) => {
     const [review, setReview] = useState(initialReviewState);
 
     const onChangeReview = e => {
-        const review =e.target.value;
+        const review = e.target.value;
         setReview(review);
     }
 
